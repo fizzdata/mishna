@@ -17,18 +17,18 @@
       <div v-if="selectedPerakim.length > 0" class="bg-indigo-50 p-4 border-b border-indigo-100">
         <div class="flex flex-wrap items-center justify-between">
           <div class="text-indigo-800 font-medium">
-            <span class="mr-2">נבחרו:</span>
+            <span class="mr-2">אויסגעקליבן:</span>
             <span class="bg-indigo-500 text-white px-2 py-1 rounded-full text-sm">{{ selectedPerakim.length }} פרקים</span>
           </div>
           <div class="flex space-x-2 mt-2 sm:mt-0">
             <button @click="deselectAll" class="px-3 py-1 bg-gray-200 hover:bg-gray-300 rounded-md text-gray-700 transition">
-              בטל בחירה
+              בטל די אויסוואל
             </button>
             <button @click="openBulkModal" class="px-3 py-1 bg-indigo-600 hover:bg-indigo-700 rounded-md text-white transition flex items-center">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
               </svg>
-              עדכן נבחרים
+              אפדעיט אויסגעקליבענע
             </button>
           </div>
         </div>
@@ -37,7 +37,7 @@
       <!-- Loading Indicator -->
       <div v-if="loading" class="p-8 text-center">
         <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 mx-auto"></div>
-        <p class="mt-4 text-gray-600">טוען נתונים...</p>
+        <p class="mt-4 text-gray-600">לאוט משניות...</p>
       </div>
       
       <!-- Sedarim List -->
@@ -83,11 +83,11 @@
 
                                   <span class="ml-2 text-xs font-normal bg-gray-100 px-2 py-1 rounded-full">
                       <span v-if="mesechtaSummary(mesechta).taken > 0">
-                        {{ mesechtaSummary(mesechta).taken }}/{{ mesechta.perakim.length }} Taken,
+                        {{ mesechtaSummary(mesechta).taken }}/{{ mesechta.perakim.length }} גענומען,
                         לומדים: {{ mesechtaSummary(mesechta).learners.join(', ') }}
                       </span>
                       <span v-else>
-                        {{ mesechta.perakim.length }} Available
+                        {{ mesechta.perakim.length }} בנימצא
                       </span>
                     </span>
 
@@ -161,23 +161,23 @@
     <div v-if="showBulkModal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center z-50 p-4">
       <div class="bg-white rounded-xl shadow-xl w-full max-w-md">
         <div class="p-6">
-          <h2 class="text-xl font-bold text-gray-800 mb-4 text-center">Enter your details</h2>
+          <h2 class="text-xl font-bold text-gray-800 mb-4 text-center">לייגט אריין דעטאלן</h2>
           
           <div class="space-y-4">
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-1 text-right">שם הלומד</label>
+              <label class="block text-sm font-medium text-gray-700 mb-1 text-right">נאמען פונעם לערנער</label>
               <input 
                 v-model="bulkData.user_name" 
-                placeholder="שם הלומד"
+                placeholder="נאמען פונעם לערנער"
                 class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-right"
               >
             </div>
             
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-1 text-right"> טלפון</label>
+              <label class="block text-sm font-medium text-gray-700 mb-1 text-right"> טעלעפאן</label>
               <input 
                 v-model="bulkData.phone" 
-                placeholder="טלפון"
+                placeholder="טעלעפאן"
                 class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-right"
               >
             </div>
@@ -187,7 +187,7 @@
                 @click="closeBulkModal" 
                 class="px-4 py-2 bg-gray-300 hover:bg-gray-400 rounded-lg text-gray-800 font-medium transition"
               >
-                cancel
+                בטל
               </button>
               <button 
                 @click="saveBulkPerakim" 
@@ -199,13 +199,13 @@
                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                     <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                   </svg>
-                  save...
+                  ווערט אוועק געלייגט...
                 </span>
                 <span v-else class="flex items-center">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
                   </svg>
-                  Submit
+                  שיק
                 </span>
               </button>
             </div>
@@ -403,12 +403,12 @@ export default {
     // Save multiple perakim
     async saveBulkPerakim() {
       if (!this.bulkData.user_name) {
-        this.showNotification('אנא הזן שם לומד', 'error');
+        this.showNotification('ביטע לייגט אריין נאמען פונעם לערנער', 'error');
         return;
       }
       
       if (this.selectedPerakim.length === 0) {
-        this.showNotification('אנא בחר לפחות פרק אחד', 'error');
+        this.showNotification('ביטע קלויב לכה"פ איין פרק', 'error');
         return;
       }
       
@@ -450,7 +450,7 @@ export default {
         this.fetchData();
       } catch (error) {
         console.error("Bulk save error:", error);
-        this.showNotification('שגיאה בעדכון הנבחרים', 'error');
+        this.showNotification('טעות ביים אפדעיטן די אויסגעקליבענע', 'error');
       } finally {
         this.saving = false;
       }
@@ -469,7 +469,7 @@ export default {
         this.rawData = await response.json();
       } catch (error) {
         console.error("Error fetching data:", error);
-        this.showNotification('שגיאה בטעינת הנתונים', 'error');
+        this.showNotification('טעות ביים לאָדן די אינפֿאָרמאַציע', 'error');
       } finally {
         this.loading = false;
       }
