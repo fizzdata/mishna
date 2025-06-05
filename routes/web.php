@@ -22,5 +22,5 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 Route::get('/{family_uid}', [MainController::class, 'home'])
-    ->where('family_uid', '^\d{12}$') 
+    ->where('family_uid', '^\d{10}$') 
     ->name('home');

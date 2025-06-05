@@ -51,7 +51,7 @@ class RegisteredUserController extends Controller
             'owner' => $user->id,
             'lel' => $request->lel,
             'due_date' => $request->due_date,
-            'uid' => random_int(100000000000, 999999999999),
+            'uid' => random_int(1000000000, 9999999999),
             'created_at' => now(),
             'updated_at' => now(),
         ]);
