@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('family', function (Blueprint $table) {
             $table->id();
             $table->foreignId('owner')->constrained('users')->onDelete('cascade');
-            $table->integer('uid');
+            $table->bigInteger('uid')->unique();
             $table->string('lel');
             $table->date('due_date');
             $table->timestamps();
