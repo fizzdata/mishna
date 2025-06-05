@@ -1,4 +1,9 @@
 <template>
+<Head>
+  <title>Mishna App</title>
+  <meta name="description" content="Mishna App by FizzDate">
+</Head>
+
   <div class="min-h-screen bg-gradient-to-b from-blue-50 to-indigo-50">
     <!-- Navigation -->
     <nav class="bg-white shadow-md py-4">
@@ -29,7 +34,7 @@
           </h1>
           
           <p class="text-xl md:text-2xl mb-10 text-gray-700 leading-relaxed">
-            די עפפ וועט אייך העלפן אָרגאַניזירן די לימוד פון משניות אין אַ גרופּע, צוטיילן פרקים צווישן משפּחה מיטגלידער און האָבן אַ קלאָר איבערבליק פון דעם פארשריט.
+            די עפפ וועט אייך העלפן אָרגאַניזירן די לימוד פון משניות אין אַ גרופע, צוטיילן פרקים צווישן משפּחה מיטגלידער און האָבן אַ קלאָר איבערבליק פון דעם פארשריט.
           </p>
           
           <div class="flex flex-wrap justify-center gap-4">
@@ -219,6 +224,8 @@
 <script setup>
 import { Link } from '@inertiajs/vue3';
 import { onMounted } from 'vue';
+import { Head } from '@inertiajs/vue3';
+
 
 // Scroll animation function
 const scrollToFeatures = () => {
