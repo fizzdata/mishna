@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('mesechta_id')->constrained('mesechta')->onDelete('cascade');
             $table->string('perek');
+            $table->boolean('completed')->default(false);
+            $table->date('completed_at')->nullable();
             $table->timestamps();
         });
     }
