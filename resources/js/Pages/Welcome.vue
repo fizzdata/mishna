@@ -34,7 +34,7 @@
           
           <div class="flex flex-wrap justify-center gap-4">
             <Link href="/register" class="btn-primary text-white py-3 px-8 rounded-full font-medium text-lg">
-              מיין קאנטע<i class="ml-2 fas fa-user-plus"></i>
+              שאפט א קאנטע<i class="ml-2 fas fa-user-plus"></i>
             </Link>
             <a href="#features" class="bg-white text-primary border-2 border-primary py-3 px-8 rounded-full font-medium text-lg">
               ווייז מער <i class="ml-2 fas fa-arrow-down"></i>
@@ -192,7 +192,7 @@
     <!-- CTA Section -->
     <section class="py-16" style="background: linear-gradient(to right, #1d4ed8, #4f46e5);">
   <div class="container mx-auto px-4 text-center">
-    <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">גרייט צו אָנהייבן לערנען מיט אייער משפּחה?</h2>
+    <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">גרייט אָנצוהייבן צו לערנען מיט אייער משפחה?</h2>
     <p class="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
       שאַפט אַ משפחה קאָנטע איצט און הייבט אן צו אָרגאַניזירן די לימוד פון משניות
     </p>
@@ -209,7 +209,7 @@
         
         
         <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-          <p>Mishna ©2025 - Product and Securely Powered by <a href="http://fizzdata.com">FizzData.com</a></p>
+          <p>Mishna ©2025 - <a href="http://fizzdata.com">Product by and Securely Powered by FizzData.com</a></p>
         </div>
       </div>
     </footer>

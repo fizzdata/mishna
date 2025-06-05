@@ -213,6 +213,15 @@
         </div>
       </div>
     </div>
+    <footer class="bg-dark text-white py-12">
+      <div class="container mx-auto px-4">
+        
+        
+        <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+          <p>Mishna ©2025 - <a href="http://fizzdata.com">Product by and Securely Powered by FizzData.com</a></p>
+        </div>
+      </div>
+    </footer>
   </div>
 </template>
 
