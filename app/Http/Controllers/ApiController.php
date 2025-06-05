@@ -42,37 +42,62 @@ ORDER BY
         return response()->json($query);
     }
 
-    public function store(Request $request)
-    {
-        $data = $request->validate([
-            'id' => 'required|integer',
-            'user_name' => 'required|string',
-            'phone' => 'required|string',
-        ]);
+    public function store(Request $request){
 
-        $family_uid = (int) $request->family_uid;
+       // Validate request data
+    $validated = $request->validate([
+        '*' => 'required|array',
+        '*.id' => 'required|integer',
+        '*.user_name' => 'required|string|max:255',
+        '*.phone' => 'required|string|max:20',
+    ]);
 
-        $family_id = DB::table('family')
-            ->where('uid', $family_uid)
-            ->value('id');
-
-        if(!$family_id):
-            return response()->json(['error' => 'invalid id']);
-
-        $user = User::firstOrCreate([
-            'name' => $data['user_name'],
-            'phone' => $data['phone'],
-        ]);
-
-        DB::table('users_perek')->insert([
-            'perek_id' => $data['id'],
-            'family_id' => $family_id,
-            'users_id' => $user->id,
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-
-        return response()->json(['message' => 'Perek added successfully'], 201);
-        
+    // Find family
+    $family = DB::table('family')->where('uid', $request->family_uid)->first();
+    if (!$family) {
+        return response()->json(['error' => 'Family not found'], 404);
     }
+
+    // Process updates
+    $results = [];
+    $errors = [];
+
+    foreach ($validated as $update) {
+        try {
+            // Find or create user
+            $user = User::firstOrCreate(
+                ['phone' => $update['phone']],
+                ['name' => $update['user_name']]
+            );
+            
+
+            // Update or create the perek assignment
+            DB::table('users_perek')->updateOrInsert(
+                [
+                    'perek_id' => $update['id'],
+                    'family_id' => $family->id,
+                     'users_id' => $user->id,
+
+                ],
+                [
+                    'updated_at' => now(),
+                ]
+            );
+
+            $results[] = $update['id'];
+        } catch (\Exception $e) {
+            $errors[] = [
+                'id' => $update['id'],
+                'message' => $e->getMessage()
+            ];
+        }
+    }
+
+    return response()->json([
+        'success' => count($results),
+        'errors' => count($errors),
+        'updated_ids' => $results,
+        'error_details' => $errors
+    ], count($errors) ? 207 : 200); // 207 Multi-Status for partial success
+}
 }
