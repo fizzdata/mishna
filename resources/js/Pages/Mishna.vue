@@ -411,10 +411,25 @@ export default {
     
     // Save multiple perakim
     async saveBulkPerakim() {
+
+
+
       if (!this.bulkData.user_name) {
         this.showNotification('ביטע לייגט אריין נאמען פונעם לערנער', 'error');
         return;
       }
+
+       if (!this.bulkData.phone) {
+        this.showNotification('ביטע לייגט אריין פאון נאמבער פונעם לערנער', 'error');
+        return;
+      }
+
+  const phoneRegex = /^[+]?[0-9]{10,15}$/; // Accepts international format with optional +
+
+  if (!phoneRegex.test(this.bulkData.phone)) {
+    this.showNotification(' די טעלעפאון איר האט אריינגעלייגט איז נישט ריכטיג  ', 'error');
+    return;
+  }
       
       if (this.selectedPerakim.length === 0) {
         this.showNotification('ביטע קלויב לכה"פ איין פרק', 'error');
